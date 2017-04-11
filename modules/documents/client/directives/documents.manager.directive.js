@@ -708,6 +708,7 @@ angular.module('documents')
 										//$log.debug('File results ', JSON.stringify(result));
 										if (directoryStructure) {
 											//$log.debug('Setting the new directory structure...');
+											console.log("refreshing modal");
 											$scope.project.directoryStructure = directoryStructure;
 											$scope.$broadcast('documentMgrRefreshNode', { directoryStructure: directoryStructure });
 										}

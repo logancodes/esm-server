@@ -75,6 +75,7 @@
 					<label class="control-label">Start Date</label>
 					<div class="form-control pcp-date date-picker"
 						ng-disabled="!startPickerEnabled"
+						ng-if="period.dateCompleted" x-min="period.dateCompleted"
 						x-modal-date-picker x-selected-date="period.dateStarted" x-picker-enabled="startPickerEnabled"
 						title="{{ period.dateStarted | amDateFormat:'HH:mm:ss' }}">
 						<span ng-if="!period.dateStarted">Start Date</span>

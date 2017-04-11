@@ -826,10 +826,12 @@ function directiveModalDatePicker($modal, $rootScope, $timeout) {
         scope: {
         	selectedDate: '=',
         	title: '@',
-        	pickerEnabled: '='
+        	pickerEnabled: '=',
+			min: '='
         },
 		link : function(scope, element, attrs) {
 			element.on('click', function() {
+				console.log(scope);
 				/*
 				Setting ng-disabled on an element with the date picker modal does not disable the click
 				event. It only changes the cursor and ui to look disabled.  To control whether the date picker
@@ -847,11 +849,16 @@ function directiveModalDatePicker($modal, $rootScope, $timeout) {
 					size: 'md',
 					resolve: {
 			            	rChosenDate: function() {
+								//console.log($rootScope);
 			            		return scope.selectedDate;
 	        				},
 	        				rTitle: function() {
 	        					return scope.title;
-	        				}
+	        				},
+							mindate: function() {
+								return scope.min;
+							}
+
 					}
 				});
 				modalAddComment.result.then(function (chosenDate) {

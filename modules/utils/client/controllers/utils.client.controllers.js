@@ -450,22 +450,35 @@ function controllerModalSelectItems($modalInstance, rAllItems, rSelectedItems, r
 }
 // -----------------------------------------------------------------------------------
 //
-// CONTROLLER: Modal: Add Anon Comment
+// CONTROLLER: Modal: Add Anon Commentmong
 //
 // -----------------------------------------------------------------------------------
-controllerModalDatePicker.$inject = ['$modalInstance', 'rChosenDate', 'moment'];
+controllerModalDatePicker.$inject = ['$modalInstance', 'rChosenDate', 'moment', 'mindate'];
 /* @ngInject */
-function controllerModalDatePicker($modalInstance, rChosenDate, moment) {
+//this function uses bootstrap datepicker
+function controllerModalDatePicker($modalInstance, rChosenDate, moment, mindate) {
+	//console.log(period);
+	console.log("mindate: ", mindate);
 	var modalDatePick = this;
 
 	modalDatePick.chosenDate = rChosenDate || moment().set({'hour':9, 'minute':0, 'second': 0, 'millisecond': 0});
 	modalDatePick.showSelector = true;
 
-	modalDatePick.onTimeSet = function() {
+	//modalDatePick.minDate = new Date();
+	modalDatePick.toggleMin = function() {
+    	console.log("here")
+    	//modalDatePick.minDate = modalDatePick.minDate ? null : new Date();
+		modalDatePick.maxDate = mindate;
+  	};
+  	modalDatePick.toggleMin();
+	console.log(modalDatePick);
+
+	modalDatePick.onTimeSet = function(newDate, oldDate) {
 		modalDatePick.showSelector = false;
 	};
 
 	modalDatePick.enableSelector = function() {
+		console.log(modalDatePick);
 		modalDatePick.showSelector = true;
 	};
 

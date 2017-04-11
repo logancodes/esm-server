@@ -35,13 +35,16 @@ angular.module('documents')
 								DocumentMgrService.addDirectory($scope.project, $scope.node, self.entryText)
 									.then(
 										function (result) {
+											console.log("folder object",$scope.node);
 											$modalInstance.close(result.data);
 										},
 										function (err) {
 											//$log.error('addDirectory error: ', JSON.stringify(err));
 											AlertService.error("Could not add folder: " + err.data.message);
 										}
-									);
+									).then(function (data) {
+										$rootScope.$broadcast('documentMgrRefreshNode', { directoryStructure: data });
+									})
 							};
 
 						}
@@ -49,7 +52,7 @@ angular.module('documents')
 						$rootScope.$broadcast('documentMgrRefreshNode', { directoryStructure: data });
 					})
 					.catch(function (err) {
-						//$log.error(err);
+						$log.error(err);
 					});
 				});
 			}
