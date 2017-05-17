@@ -7,11 +7,12 @@
 	<div class="table-container">
 		<table class="table table-hover table-scroll select-email-template" ng-class="{'no-records': !s.items || s.items.length === 0}" ng-table="self.tableParams">
 			<tr ng-class="{'active': s.isSelected(t._id)}"
-				ng-repeat="t in s.items">
+				ng-repeat="t in s.items"
+				ng-click="s.select(t._id)">
 				<td class="col checkbox-col"
 					header-class="'col checkbox-col'">
 					<div>
-						<input type="checkbox" ng-click="s.select(t._id)" ng-checked="s.isSelected(t._id)"/>
+						<input id="{{t._id}}" type="checkbox" ng-checked="s.isSelected(t._id)"/>
 						<label for="{{t._id}}">
 							<span class="glyphicon glyphicon-ok"></span>
 						</label>

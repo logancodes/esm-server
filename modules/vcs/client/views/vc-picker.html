@@ -6,11 +6,12 @@
 	<div class="table-container">
 		<table class="table table-hover table-scroll">
 			<tr ng-class="{'active': (s.findById(vc._id)!= -1)}"
-				ng-repeat="vc in s.vcs | orderBy">
+				ng-repeat="vc in s.vcs | orderBy"
+				ng-click="s.dealwith (vc)">
 				<td class="col checkbox-col"
 					header-class="'col checkbox-col'">
 					<div>
-						<input type="checkbox" ng-click="s.dealwith (vc)" ng-checked="s.findById(vc._id) != -1"/>
+						<input id="{{vc._id}}" type="checkbox" ng-checked="s.findById(vc._id) != -1"/>
 						<label for="{{vc._id}}">
 							<span class="glyphicon glyphicon-ok"></span>
 						</label>

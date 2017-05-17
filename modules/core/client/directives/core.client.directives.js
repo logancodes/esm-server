@@ -500,6 +500,7 @@ angular.module('core')
 							setUserRole(s.userRoleIndex, user.username, role, value);
 						};
 						s.clickRole = function (user, role, value) {
+							console.log("role selected", role);
 							s.dirty = true;
 							setUserRole(s.userRoleIndex, user.username, role, value);
 						};

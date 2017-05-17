@@ -8,11 +8,12 @@
 	<div class="table-container">
 		<table class="table table-hover table-scroll" ng-table="self.tableParams" show-filter="self.showFilter">
 			<tr ng-class="{'active': self.chosen(o._id)}"
-				ng-repeat="o in $data">
+				ng-repeat="o in $data"
+				ng-click="self.toggleItem(o)">
 				<td class="col checkbox-col"
 					header-class="'col checkbox-col'">
 					<div>
-						<input type="checkbox" ng-click="self.toggleItem(o)" ng-checked="self.chosen(o._id)"/>
+						<input id="{{o._id}}" type="checkbox" ng-checked="self.chosen(o._id)"/>
 						<label for="{{o._id}}">
 							<span class="glyphicon glyphicon-ok"></span>
 						</label>

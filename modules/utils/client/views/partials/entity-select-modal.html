@@ -7,11 +7,12 @@
 	<div class="table-container">
 		<table class="table table-hover table-scroll" ng-table="tableParams" show-filter="true">
 			<tr ng-class="{'active': index(o) !== -1}"
-				ng-repeat="o in $data">
+				ng-repeat="o in $data"
+				ng-click="toggleItem(o)">
 				<td class="col checkbox-col"
 					header-class="'col checkbox-col'">
 					<div>
-						<input type="checkbox" ng-click="toggleItem(o)" ng-checked="index(o) !== -1"/>
+						<input id="{{o._id}}" type="checkbox" ng-checked="index(o) !== -1"/>
 						<label for="{{o._id}}">
 							<span class="glyphicon glyphicon-ok"></span>
 						</label>
