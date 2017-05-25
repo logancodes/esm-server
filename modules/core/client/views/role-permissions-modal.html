@@ -28,17 +28,17 @@
 		<div class="panel panel-default">
 			<div class="table-container">
 				<table class="table table-hover">
-					<tr ng-class="{'active': s.selectedPermission(s.currentPermission, role)}"
-						ng-repeat="role in s.allRoles | orderBy">
+					<tr ng-class="{'active': s.selectedPermission(s.currentPermission, role),'disable-row': !s.currentPermission}"
+						ng-repeat="role in s.allRoles | orderBy"
+						ng-click="s.toggleRoles(s.currentPermission, role)">
 						<td class="col checkbox-col"
 							header-class="'col checkbox-col'">
 							<div>
 								<input type="checkbox" 
-								ng-disabled="!s.currentPermission"
-								ng-change="s.clickRole(s.currentPermission, role, s.permissionRoleIndex.permission[s.currentPermission][role])"
 								ng-model="s.permissionRoleIndex.permission[s.currentPermission][role]"
-								id="checkRole"/>
-								<label for="checkRole">
+								ng-disabled="!s.currentPermission"
+								id="{{role}}"/>
+								<label for="{{role}}">
 									<span class="glyphicon glyphicon-ok"></span>
 								</label>
 							</div>
@@ -63,17 +63,17 @@
 		<div class="panel panel-default">
 			<div class="table-container">
 				<table class="table table-hover">
-					<tr ng-class="{'active': s.selectedRole(permission, s.currentRole)}"
-						ng-repeat="permission in s.allPermissions | orderBy">
+					<tr ng-class="{'active': s.selectedRole(permission, s.currentRole), 'disable-row': !s.currentRole}"
+						ng-repeat="permission in s.allPermissions | orderBy"
+						ng-click="s.togglePermission(permission, s.currentRole)">
 						<td class="col checkbox-col"
 							header-class="'col checkbox-col'">
 							<div>
 								<input type="checkbox" 
-								ng-disabled="!s.currentRole"
-								ng-change="s.clickPermission(permission, s.currentRole, s.permissionRoleIndex.role[s.currentRole][permission])"
 								ng-model="s.permissionRoleIndex.role[s.currentRole][permission]"
-								id="checkPermission"/>
-								<label for="checkPermission">
+								ng-disabled="!s.currentRole"
+								id="{{permission}}"/>
+								<label for="{{permission}}">
 									<span class="glyphicon glyphicon-ok"></span>
 								</label>
 							</div>
