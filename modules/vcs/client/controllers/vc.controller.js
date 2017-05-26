@@ -71,13 +71,9 @@ angular.module ('vcs')
 			$scope.$apply();
 		});
 
-		console.log("self.current", self.current);
 
 		this.toggleItem = function (item) {
-			
-			console.log("item:",item);
 			var idx = self.current.indexOf(item._id);
-			console.log(idx);
 			if (idx === -1) {
 				self.currentObjs.push(item);
 				self.current.push(item._id);
