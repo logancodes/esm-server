@@ -240,9 +240,38 @@ function controllerProjectsList2($scope, NgTableParams, Authentication, _, ENV, 
 			//projs.pluck('eacDecision').unique().value().map( function (item) {
 			//	projectList.eacDecisionArray.push({id: item, title: item});
 			//});
-			_.each(EAC_DECISIONS, function(item) {
-				projectList.eacDecisionArray.push({id: item, title: item});
+			_.each(EAC_DECISIONS, function (item) {
+				var i = -1;
+				if (item === "In Progress") {
+					i = 0;
+				}
+				else if (item === "Certificate Issued") {
+					i = 1;
+				}
+				else if (item === "Certificate Refused") {
+					i = 2;
+				}
+				else if (item === "Further Assessment Required") {
+					i = 3;
+				}
+				else if (item === "Certificate Not Required") {
+					i = 4;
+				}
+				else if (item === "Certificate Expired") {
+					i = 5;
+				}
+				else if (item === "Withdrawn") {
+					i = 6;
+				}
+				else if (item === "Terminated") {
+					i = 7;
+				}
+				else if (item === "Pre-EA Act Approval") {
+					i = 8;
+				}
+				projectList.eacDecisionArray[i] = { id: item, title: item };
 			});
+
 			projs.pluck('type').unique().value().map( function(item) {
 				projectList.typeArray.push({id: item, title: item});
 			});
