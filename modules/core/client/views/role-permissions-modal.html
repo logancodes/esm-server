@@ -27,15 +27,15 @@
 		</div>
 		<div class="panel panel-default">
 			<div class="table-container">
-				<table class="table table-hover">
-					<tr ng-class="{'active': s.selectedPermission(s.currentPermission, role),'disable-row': !s.currentPermission}"
-						ng-repeat="role in s.allRoles | orderBy"
-						ng-click="s.toggleRoles(s.currentPermission, role)">
+				<table class="user-search-table table table-hover">
+					<tr ng-class="{'active': s.selectedPermission(s.currentPermission, role)}"
+						ng-repeat="role in s.allRoles | orderBy">
 						<td class="col checkbox-col"
 							header-class="'col checkbox-col'">
 							<div>
 								<input type="checkbox" 
 								ng-model="s.permissionRoleIndex.permission[s.currentPermission][role]"
+								ng-change="s.clickRole(s.currentPermission, role, s.permissionRoleIndex.permission[s.currentPermission][role])"
 								ng-disabled="!s.currentPermission"
 								id="{{role}}"/>
 								<label for="{{role}}">
@@ -62,15 +62,15 @@
 		<label>Manage Permissions for Role</label>
 		<div class="panel panel-default">
 			<div class="table-container">
-				<table class="table table-hover">
-					<tr ng-class="{'active': s.selectedRole(permission, s.currentRole), 'disable-row': !s.currentRole}"
-						ng-repeat="permission in s.allPermissions | orderBy"
-						ng-click="s.togglePermission(permission, s.currentRole)">
+				<table class="user-search-table table table-hover">
+					<tr ng-class="{'active': s.selectedRole(permission, s.currentRole)}"
+						ng-repeat="permission in s.allPermissions | orderBy">
 						<td class="col checkbox-col"
 							header-class="'col checkbox-col'">
 							<div>
 								<input type="checkbox" 
 								ng-model="s.permissionRoleIndex.role[s.currentRole][permission]"
+								ng-change="s.clickPermission(permission, s.currentRole, s.permissionRoleIndex.role[s.currentRole][permission])"
 								ng-disabled="!s.currentRole"
 								id="{{permission}}"/>
 								<label for="{{permission}}">
