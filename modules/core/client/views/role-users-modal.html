@@ -35,15 +35,15 @@
 		</div>
 		<div class="panel panel-default">
 			<div class="table-container">
-				<table class="table table-hover">
-					<tr ng-class="{'active': s.roleSelect(s.currentUser, role), 'disable-row': !s.currentUser}"
-						ng-repeat="role in s.allRoles"
-						ng-click="s.toggleItemUser(s.currentUser, role)">
+				<table class="user-search-table table table-hover">
+					<tr ng-class="{'active': s.roleSelect(s.currentUser, role)}"
+						ng-repeat="role in s.allRoles">
 						<td class="col checkbox-col"
 							header-class="'col checkbox-col'">
 							<div>
 								<input type="checkbox"
 								ng-model="s.userRoleIndex.user[s.currentUser.username][role]"
+								ng-change="s.clickRole(s.currentUser, role, s.userRoleIndex.user[s.currentUser.username][role])"
 								ng-disabled="!s.currentUser"
 								id="{{role}}"/>
 								<label for="{{role}}">
@@ -79,16 +79,16 @@
 		</div>
 		<div class="panel panel-default">
 			<div class="table-container">
-				<table class="table table-hover">
-					<tr ng-class="{'active': s.userSelect(u, s.currentRole), 'disable-row': !s.currentRole}"
-						ng-repeat="u in s.allUsers | orderBy: 'lastName'"
-						ng-click="s.toggleItemRoles(u,s.currentRole)">
+				<table class="user-search-table table table-hover">
+					<tr ng-class="{'active': s.userSelect(u, s.currentRole)}"
+						ng-repeat="u in s.allUsers | orderBy: 'lastName'">
 						<td class="col checkbox-col"
 							header-class="'col checkbox-col'">
 							<div>
 								<input type="checkbox" 
-                     			ng-model="s.userRoleIndex.role[s.currentRole][u.username]"
-								ng-disabled="!s.currentRole" 
+								ng-model="s.userRoleIndex.role[s.currentRole][u.username]"
+								ng-disabled="!s.currentRole"
+								ng-change="s.clickUser(u, s.currentRole, s.userRoleIndex.role[s.currentRole][u.username])"
 								id="{{u}}"/>
 								<label for="{{u}}">
 									<span class="glyphicon glyphicon-ok"></span>
